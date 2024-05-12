@@ -16,9 +16,6 @@ Git 的版本库有一个称为 Stage 的暂存区以及最后的 History 版本
 
 HEAD: 指向最后一次提交的结果。
 
-![1715514135191](C:\Users\lsd15\Documents\WeChat Files\wxid_kcrpyxkv7i7l22\FileStorage\Temp\1715514135191.png)
-
-
 
 ### 操作指令：
 
