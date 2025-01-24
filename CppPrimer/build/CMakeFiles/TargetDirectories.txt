@@ -1,3 +1,0 @@
-/Users/lishundong/Desktop/2023/BookReading/CppPrimer/build/CMakeFiles/CppPrimer.dir
-/Users/lishundong/Desktop/2023/BookReading/CppPrimer/build/CMakeFiles/edit_cache.dir
-/Users/lishundong/Desktop/2023/BookReading/CppPrimer/build/CMakeFiles/rebuild_cache.dir
