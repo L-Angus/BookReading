@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.0)
+project(EffectiveCpp)
+set(CMAKE_CXX_STANDARD 11)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+set(INCLUDE_DIR ./include)
+aux_source_directory(./src SRC)
+add_executable(EffectiveCpp ${SRC})
+target_include_directories(EffectiveCpp PUBLIC ${INCLUDE_DIR})

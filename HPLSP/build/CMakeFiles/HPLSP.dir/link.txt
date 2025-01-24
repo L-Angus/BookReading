@@ -1,1 +1,1 @@
-/usr/bin/c++ -rdynamic CMakeFiles/HPLSP.dir/src/main.cpp.o -o HPLSP 
+/Library/Developer/CommandLineTools/usr/bin/c++  -arch arm64 -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX14.0.sdk -mmacosx-version-min=13.6 -Wl,-search_paths_first -Wl,-headerpad_max_install_names CMakeFiles/HPLSP.dir/src/main.cpp.o -o HPLSP 
