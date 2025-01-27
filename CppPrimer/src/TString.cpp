@@ -24,6 +24,23 @@ TString &TString::operator=(const TString &rhs) {
   first_free = cap = data.second;
   return *this;
 }
+TString::TString(TString &&s) noexcept
+    : elements(s.elements), first_free(s.first_free), cap(s.cap) {
+  std::cout << "move constructor" << std::endl;
+  s.elements = s.first_free = s.cap = nullptr;
+}
+
+TString &TString::operator=(TString &&rhs) noexcept {
+  std::cout << "move assignment" << std::endl;
+  if (this != &rhs) {
+    free();
+    elements = rhs.elements;
+    first_free = rhs.first_free;
+    cap = rhs.cap;
+    rhs.elements = rhs.first_free = rhs.cap = nullptr;
+  }
+  return *this;
+}
 
 TString::~TString() { free(); }
 void TString::free() {

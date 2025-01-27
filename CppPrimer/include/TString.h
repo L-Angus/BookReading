@@ -14,6 +14,8 @@ public:
   TString(const char *);
   TString(const TString &);
   TString &operator=(const TString &);
+  TString(TString &&) noexcept;
+  TString &operator=(TString &&) noexcept;
   ~TString();
   char *begin() const { return elements; }
   char *end() const { return first_free; }

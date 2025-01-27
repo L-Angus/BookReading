@@ -13,6 +13,8 @@ public:
   explicit Message(const std::string &str = "");
   Message(const Message &rhs);
   Message &operator=(const Message &rhs);
+  Message(Message &&rhs) noexcept;
+  Message &operator=(Message &&rhs) noexcept;
   ~Message();
   void save(Folder &fd);
   void remove(Folder &fd);
@@ -24,6 +26,7 @@ private:
   std::set<Folder *> folders;
   void add_to_Folders(const Message &msg);
   void remove_from_Folders();
+  void move_Folders(Message *msg);
 };
 
 #endif

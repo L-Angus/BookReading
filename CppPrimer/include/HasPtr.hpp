@@ -11,15 +11,24 @@ public:
   HasPtr(const std::string &s = std::string())
       : ps(new std::string(s)), i(0), use(new size_t(1)) {}
   HasPtr(const HasPtr &rhs) : ps(rhs.ps), i(rhs.i), use(rhs.use) { ++*use; }
-  HasPtr &operator=(const HasPtr &rhs) {
-    ++*rhs.use;
-    if (--*use == 0) {
-      delete ps;
-      delete use;
-    }
-    ps = rhs.ps;
-    i = rhs.i;
-    use = rhs.use;
+  // HasPtr &operator=(const HasPtr &rhs) {
+  //   ++*rhs.use;
+  //   if (--*use == 0) {
+  //     delete ps;
+  //     delete use;
+  //   }
+  //   ps = rhs.ps;
+  //   i = rhs.i;
+  //   use = rhs.use;
+  //   return *this;
+  // }
+  HasPtr(HasPtr &&rhs) noexcept : ps(rhs.ps), i(rhs.i), use(rhs.use) {
+    rhs.ps = nullptr;
+    rhs.use = nullptr;
+  }
+  HasPtr &operator=(HasPtr rhs) {
+    std::cout << "copy and swap" << std::endl;
+    swap(*this, rhs);
     return *this;
   }
 

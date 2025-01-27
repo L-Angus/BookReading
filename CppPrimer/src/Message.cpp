@@ -14,6 +14,18 @@ Message &Message::operator=(const Message &rhs) {
   add_to_Folders(*this);
   return *this;
 }
+
+Message::Message(Message &&rhs) noexcept : contexts(std::move(rhs.contexts)) {
+  move_Folders(&rhs);
+}
+Message &Message::operator=(Message &&rhs) noexcept {
+  if (this != &rhs) {
+    remove_from_Folders();
+    contexts = std::move(rhs.contexts);
+    move_Folders(&rhs);
+  }
+  return *this;
+}
 Message::~Message() { remove_from_Folders(); }
 void Message::save(Folder &f) {
   f.addMsg(this);
@@ -53,4 +65,13 @@ void swap(Message &lhs, Message &rhs) {
   for (auto f : rhs.folders) {
     f->addMsg(&rhs);
   }
+}
+
+void Message::move_Folders(Message *m) {
+  folders = std::move(m->folders);
+  for (auto f : folders) {
+    f->remMsg(m);
+    f->addMsg(this);
+  }
+  m->folders.clear();
 }

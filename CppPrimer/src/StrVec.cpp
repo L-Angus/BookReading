@@ -1,13 +1,16 @@
 #include "../include/StrVec.h"
+#include <iostream>
 
 StrVec::StrVec() : elements(nullptr), first_free(nullptr), cap(nullptr) {}
 StrVec::StrVec(const StrVec &rhs) : StrVec() {
+  std::cout << "copy ctor" << std::endl;
   auto newdata = alloc_n_copy(rhs.begin(), rhs.end());
   elements = newdata.first;
   first_free = newdata.second;
   cap = rhs.cap;
 }
 StrVec &StrVec::operator=(const StrVec &rhs) {
+  std::cout << "copy assign" << std::endl;
   auto newdata = alloc_n_copy(rhs.begin(), rhs.end());
   free();
   elements = newdata.first;
@@ -17,17 +20,44 @@ StrVec &StrVec::operator=(const StrVec &rhs) {
 }
 
 StrVec::StrVec(std::initializer_list<std::string> il) : StrVec() {
+  std::cout << "init list ctor" << std::endl;
   auto newdata = alloc_n_copy(il.begin(), il.end());
   elements = newdata.first;
   first_free = newdata.second;
   cap = newdata.second;
 }
 
+StrVec::StrVec(StrVec &&rhs) noexcept
+    : elements(rhs.elements), first_free(rhs.first_free), cap(rhs.cap) {
+  std::cout << "move ctor" << std::endl;
+  rhs.elements = rhs.first_free = rhs.cap = nullptr;
+}
+
+StrVec &StrVec::operator=(StrVec &&rhs) noexcept {
+  std::cout << "move assign" << std::endl;
+  if (this != &rhs) {
+    free();
+    elements = rhs.elements;
+    first_free = rhs.first_free;
+    cap = rhs.cap;
+    rhs.elements = rhs.first_free = rhs.cap = nullptr;
+  }
+  return *this;
+}
+
 StrVec::~StrVec() { free(); }
 void StrVec::push_back(const std::string &s) {
+  std::cout << "copy push_back" << std::endl;
   chk_n_alloc();
   std::allocator_traits<std::allocator<std::string>>::construct(
       alloc, first_free++, s);
+}
+
+void StrVec::push_back(std::string &&s) {
+  std::cout << "move push_back" << std::endl;
+  chk_n_alloc();
+  std::allocator_traits<std::allocator<std::string>>::construct(
+      alloc, first_free++, std::move(s));
 }
 
 std::pair<std::string *, std::string *>
@@ -100,4 +130,9 @@ void StrVec::resize(size_t n, const std::string &s) {
           alloc, first_free++, s);
     }
   }
+}
+
+StrVec StrVec::getVec(std::istream &is) {
+  StrVec temp;
+  return temp;
 }

@@ -1,29 +1,37 @@
+#include "../include/Foo.h"
+#include "../include/HasPtr.hpp"
+#include "../include/StrVec.h"
 #include "../include/TString.h"
 
 #include <iostream>
 #include <vector>
 
 int main() {
-  TString s("Cpp Primer 5th");
-  std::cout << s << std::endl;
-  std::cout << s.capacity() << std::endl;
-  std::cout << s.size() << std::endl;
+  // std::vector<TString> m_ts_vec;
+  // m_ts_vec.push_back(TString("hello"));
+  // m_ts_vec.push_back(TString("world"));
+  // m_ts_vec.push_back(TString("!"));
+  // TString m_ts("hello world");
+  // m_ts_vec.push_back(m_ts);
 
-  TString s2;
-  s2 = s;
-  std::cout << s2 << std::endl;
-  std::cout << s2.capacity() << std::endl;
-  std::cout << s2.size() << std::endl;
+  // StrVec vec;
+  // std::string s = "some string or another.";
+  // vec.push_back(s);
+  // vec.push_back("done");
 
-  TString s3(s);
-  std::cout << s3 << std::endl;
-  std::cout << s3.capacity() << std::endl;
-  std::cout << s3.size() << std::endl;
+  // std::string s1 = "a value", s2 = "another";
+  // s1 + s2 = "wow";
+  // std::cout << s1 + s2 << std::endl;
 
-  std::vector<TString> vec;
-  vec.push_back(s);
-  vec.push_back(s2);
-  vec.push_back(s3);
+  // Foo &retFoo();
+  // Foo retVal();
+  // Foo i, j;
+  // i = j;
+  // retFoo() = j;
+  // retVal() = j;
+  // i = retVal();
 
+  // Foo f;
+  // f.sorted();
   return 0;
 }

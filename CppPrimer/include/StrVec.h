@@ -10,14 +10,18 @@ public:
   StrVec(const StrVec &);
   StrVec &operator=(const StrVec &);
   StrVec(std::initializer_list<std::string>);
+  StrVec(StrVec &&) noexcept;
+  StrVec &operator=(StrVec &&) noexcept;
   ~StrVec();
   void push_back(const std::string &);
+  void push_back(std::string &&);
   void reserve(size_t n);
   void resize(size_t n);
   size_t size() const { return first_free - elements; }
   size_t capacity() const { return cap - elements; }
   std::string *begin() const { return elements; }
   std::string *end() const { return first_free; }
+  StrVec getVec(std::istream &);
 
 private:
   std::pair<std::string *, std::string *> alloc_n_copy(const std::string *,

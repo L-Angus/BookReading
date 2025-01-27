@@ -10,6 +10,7 @@ Folder &Folder::operator=(const Folder &rhs) {
   add_to_Messages(*this);
   return *this;
 }
+
 Folder::~Folder() { remove_from_Messages(); }
 
 void Folder::addMsg(Message *msg) { messages.insert(msg); }
