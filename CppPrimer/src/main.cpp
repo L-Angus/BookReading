@@ -1,37 +1,65 @@
 #include "../include/Foo.h"
 #include "../include/HasPtr.hpp"
+#include "../include/SmartPointer.hpp"
+#include "../include/StrBlob.h"
 #include "../include/StrVec.h"
 #include "../include/TString.h"
 
 #include <iostream>
+#include <memory>
 #include <vector>
 
 int main() {
-  // std::vector<TString> m_ts_vec;
-  // m_ts_vec.push_back(TString("hello"));
-  // m_ts_vec.push_back(TString("world"));
-  // m_ts_vec.push_back(TString("!"));
-  // TString m_ts("hello world");
-  // m_ts_vec.push_back(m_ts);
+  // CppPrimer::shared_ptr<int> p1(new int(42));
+  // std::cout << *p1 << std::endl;
+  // CppPrimer::shared_ptr<TString> p2(new TString("hello"));
+  // CppPrimer::shared_ptr<TString> p3(new TString("hello"));
+  // p2 = p3;
+  // std::cout << p2.use_count() << std::endl;
+  // std::cout << p3.use_count() << std::endl;
 
-  // StrVec vec;
-  // std::string s = "some string or another.";
-  // vec.push_back(s);
-  // vec.push_back("done");
+  // CppPrimer::shared_ptr<TString> p4(new TString("hello1"));
+  // p2 = p4;
+  // std::cout << p2.use_count() << std::endl;
+  // std::cout << p3.use_count() << std::endl;
+  // std::cout << p4.use_count() << std::endl;
 
-  // std::string s1 = "a value", s2 = "another";
-  // s1 + s2 = "wow";
-  // std::cout << s1 + s2 << std::endl;
+  // p3.swap(p4);
+  // std::cout << *p3 << std::endl;
 
-  // Foo &retFoo();
-  // Foo retVal();
-  // Foo i, j;
-  // i = j;
-  // retFoo() = j;
-  // retVal() = j;
-  // i = retVal();
+  // auto p5(p4);
+  // std::cout << p5.use_count() << std::endl;
 
-  // Foo f;
-  // f.sorted();
+  // std::cout << "------------------ compare --------------------" <<
+  // std::endl;
+
+  // std::shared_ptr<int> sp1(new int(42));
+  // std::cout << *sp1 << std::endl;
+  // std::shared_ptr<TString> sp2(new TString("hello"));
+  // std::shared_ptr<TString> sp3(new TString("world"));
+  // sp2 = sp3;
+  // std::cout << sp2.use_count() << std::endl;
+  // std::cout << sp3.use_count() << std::endl;
+
+  // std::shared_ptr<TString> sp4(new TString("hello1"));
+  // sp2 = sp4;
+  // std::cout << sp2.use_count() << std::endl;
+  // std::cout << sp3.use_count() << std::endl;
+  // std::cout << sp4.use_count() << std::endl;
+  StrBlob<std::string> b1;
+  {
+    StrBlob<std::string> b2{"a", "an", "the"};
+    b1 = b2;
+    b2.push_back("about");
+    std::cout << "b1 size: " << b1.size() << std::endl;
+    std::cout << "b2 size: " << b2.size() << std::endl;
+  }
+
+  b1.front() = "another string";
+  std::cout << b1.front() << std::endl;
+
+  const StrBlob<std::string> cb1 = b1;
+  std::cout << cb1.front() << std::endl;
+
   return 0;
 }
