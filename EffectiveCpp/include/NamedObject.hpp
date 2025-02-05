@@ -3,11 +3,11 @@
 
 #include <string>
 
-class NamedObject {
-private:
-  const std::string &nameValue;
-  NamedObject(const NamedObject &);
-  NamedObject &operator=(const NamedObject &);
-};
+// class NamedObject {
+// private:
+//   const std::string &nameValue;
+//   NamedObject(const NamedObject &);
+//   NamedObject &operator=(const NamedObject &);
+// };
 
 #endif

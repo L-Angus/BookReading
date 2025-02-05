@@ -1,10 +1,9 @@
 #include <iostream>
 
-#include "NamedObject.hpp"
+#include "../include/Item13.hpp"
+
 int main() {
   std::cout << "Hello World!" << std::endl;
-  NamedObject no;
-  NamedObject no2;
-  no2 = no;
+
   return 0;
 }
