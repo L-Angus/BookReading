@@ -21,6 +21,7 @@ public:
   char *end() const { return first_free; }
   size_t size() const { return first_free - elements; }
   size_t capacity() const { return cap - elements; }
+  void print() const;
 
 private:
   void free();

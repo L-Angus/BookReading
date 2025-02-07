@@ -70,3 +70,9 @@ std::pair<char *, char *> TString::alloc_n_copy(const char *b, const char *e) {
   auto new_elements = alloc.allocate(e - b);
   return {new_elements, std::uninitialized_copy(b, e, new_elements)};
 }
+
+void TString::print() const {
+  for (auto p = elements; p != first_free; ++p)
+    std::cout << *p << " ";
+  std::cout << std::endl;
+}
