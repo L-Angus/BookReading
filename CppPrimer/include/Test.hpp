@@ -70,4 +70,18 @@ void Test_Shared_Ptr_Deleter() {
   f1(d);
 }
 
+void Test_12_33() {
+  const char *str1 = "Hello World";
+  const char *str2 = "C++ Primer";
+  char *str = new char[strlen(str1) + strlen(str2) + 1];
+  strcpy(str, str1);
+  strcat(str, str2);
+  std::cout << str << std::endl;
+
+  const std::string &str3 = "Hello World";
+  const std::string &str4 = "C++ Primer";
+  std::string str5 = str3 + str4;
+  std::cout << str5 << std::endl;
+}
+
 #endif
